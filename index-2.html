@@ -83,7 +83,7 @@
         color: white;
         padding: 1rem;
         border-radius: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 25px 0 black;
         transition: all 0.3s ease;
         text-align: center;
         flex: 0 0 45%;
@@ -118,6 +118,10 @@
         border-radius: 0.5rem;
         overflow: hidden;
         margin: 0 auto;
+      }
+
+      .video-player:hover {
+        transform: scale(1.05); /* Scale out effect on hover */
       }
       .dropdown {
         position: relative;
@@ -154,8 +158,15 @@
       header.scrolled .dropdown-content a:hover {
         background-color: #e0e7ff;
       }
+      #mission {
+        background-color: #f3f4f6; /* Light gray background */
+        border-radius: 0.5rem; /* Rounded edges */
+        /* border-top: #4b5563 10px solid; */
+        border: 10px solid #cecece;
+      }
     </style>
   </head>
+
   <body class="font-sans">
     <header id="header">
       <div
@@ -237,7 +248,7 @@
     <section id="mission" class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
-          Our Mission
+          Our Mission & Vision
         </h2>
         <div class="flex flex-col md:flex-row gap-6 items-stretch">
           <div class="flex flex-row gap-6">
@@ -274,9 +285,10 @@
               </div>
             </div>
           </div>
+
           <div class="video-player">
             <iframe
-              src="https://www.youtube.com/embed/UlikqzxvB0I?si=GCyUB0Bb3gpMopnt"
+              src="https://www.youtube.com/embed/EceDhNJE6Eg?si=GfmQr-9vBT4cvJRC"
               frameborder="0"
               allowfullscreen
               class="w-full h-full"
