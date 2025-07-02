@@ -57,13 +57,37 @@
         color: white;
         padding: 1.5rem;
         border-radius: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 25px 0 black;
         transition: all 0.3s ease;
         margin: 0 0.5rem;
+        text-align: center;
       }
       .service-card:hover {
         background-color: #3b82f6; /* Lighter blue on hover */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Reduced shadow on hover */
+        transform: scale(1.05); /* Scale out effect on hover */
+      }
+      .service-card .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 64px;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        /* Remove background and border-radius styling */
+        /* Only animate on hover */
+        transition: transform 0.3s;
+      }
+      .service-card:hover .icon {
+        animation: jiggle 0.7s infinite alternate;
+      }
+      @keyframes jiggle {
+        0% { transform: translateY(0) rotate(-5deg) scale(1); }
+        25% { transform: translateY(-4px) rotate(5deg) scale(1.1); }
+        50% { transform: translateY(0) rotate(-5deg) scale(1); }
+        75% { transform: translateY(4px) rotate(5deg) scale(0.95); }
+        100% { transform: translateY(0) rotate(-5deg) scale(1); }
       }
       .our-services-card {
         background-color: #4b5563; /* Gray background */
@@ -105,10 +129,6 @@
         background-color: white; /* White background on hover */
         color: #1e40af; /* Dark blue text on hover */
         transform: scale(1.05); /* Scale out effect on hover */
-      }
-      .appointment-form {
-        max-width: 600px;
-        margin: 0 auto;
       }
       .video-player {
         flex: 0 0 40%;
@@ -164,6 +184,32 @@
         /* border-top: #4b5563 10px solid; */
         border: 10px solid #cecece;
       }
+      .map-effect:hover {
+        background-color: white;
+        color: #1e40af;
+        transform: scale(1.05);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .pacs-top-border {
+        border-top: 10px solid #cecece !important;
+      }
+      .partner-card {
+        background-color: #1e40af;
+        color: white;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 3px 25px 0 black;
+        transition: all 0.3s ease;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .partner-card:hover {
+        background-color: #3b82f6;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transform: scale(1.05);
+      }
     </style>
   </head>
 
@@ -217,7 +263,7 @@
         <div class="container mx-auto px-4 flex justify-center">
           <div class="flex flex-col md:flex-row gap-6">
             <div class="service-card">
-              <div class="text-3xl mb-4">📅</div>
+              <div class="icon">📅</div>
               <h3 class="text-lg font-semibold mb-2">Book an Appointment</h3>
               <p class="text-sm mb-2">
                 Schedule appointments easily with our online system.
@@ -225,7 +271,7 @@
               <span class="text-xs opacity-70">01</span>
             </div>
             <div class="service-card">
-              <div class="text-3xl mb-4">⚡</div>
+              <div class="icon">⚡</div>
               <h3 class="text-lg font-semibold mb-2">Instant Service</h3>
               <p class="text-sm mb-2">
                 Access records instantly, anytime, anywhere.
@@ -233,7 +279,7 @@
               <span class="text-xs opacity-70">02</span>
             </div>
             <div class="service-card">
-              <div class="text-3xl mb-4">🖼️</div>
+              <div class="icon">🖼️</div>
               <h3 class="text-lg font-semibold mb-2">View Radiology Images</h3>
               <p class="text-sm mb-2">
                 Manage radiology images with PACS integration.
@@ -343,197 +389,81 @@
       </div>
     </section>
 
-    <section id="pacs" class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
-          PACS Overview
-        </h2>
-        <p class="text-center text-3xl font-semibold text-blue-600">
-          PACS Now Live
-        </p>
-      </div>
-    </section>
-
-    <section id="appointment" class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
-          Make an Appointment
-        </h2>
-        <form class="appointment-form space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label
-                for="last-name"
-                class="block text-sm font-medium text-gray-700"
-                >Last Name</label
-              >
-              <input
-                type="text"
-                id="last-name"
-                name="last-name"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-                placeholder="Enter last name"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="first-name"
-                class="block text-sm font-medium text-gray-700"
-                >First Name</label
-              >
-              <input
-                type="text"
-                id="first-name"
-                name="first-name"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-                placeholder="Enter first name"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="other-name"
-                class="block text-sm font-medium text-gray-700"
-                >Other</label
-              >
-              <input
-                type="text"
-                id="other-name"
-                name="other-name"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-                placeholder="e.g., Middle name or suffix"
-              />
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700"
-                >Email</label
-              >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div>
-              <label for="phone" class="block text-sm font-medium text-gray-700"
-                >Phone Number</label
-              >
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-                placeholder="Enter your phone number"
-                required
-              />
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label for="date" class="block text-sm font-medium text-gray-700"
-                >Preferred Date</label
-              >
-              <input
-                type="date"
-                id="date"
-                name="date"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-                required
-              />
-            </div>
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700"
-              >Message</label
-            >
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2"
-              placeholder="Enter any additional details"
-            ></textarea>
-          </div>
-          <div>
-            <button
-              type="submit"
-              class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
-            >
-              Submit Appointment
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-
     <section id="partners" class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
           Our Partners
         </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div class="p-4 border rounded-lg shadow-md">
-            <p class="text-gray-800 font-semibold">Partner 1</p>
-            <p class="text-gray-600 text-sm">Healthcare Innovators</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div class="partner-card">
+            <img src="https://via.placeholder.com/150x80?text=Partner+1" alt="Partner 1 Logo" class="mb-4 rounded shadow-md" style="max-width: 150px;">
+            <p class="text-gray-100 text-sm text-center">Federal Medical Centre Abeokuta</p>
           </div>
-          <div class="p-4 border rounded-lg shadow-md">
-            <p class="text-gray-800 font-semibold">Partner 2</p>
-            <p class="text-gray-600 text-sm">Medical Tech Solutions</p>
+          <div class="partner-card">
+            <img src="https://via.placeholder.com/150x80?text=Partner+2" alt="Partner 2 Logo" class="mb-4 rounded shadow-md" style="max-width: 150px;">
+            <p class="text-gray-100 text-sm text-center">EMR Tech Solutions</p>
           </div>
-          <div class="p-4 border rounded-lg shadow-md">
-            <p class="text-gray-800 font-semibold">Partner 3</p>
-            <p class="text-gray-600 text-sm">Global Health Systems</p>
-          </div>
-          <div class="p-4 border rounded-lg shadow-md">
-            <p class="text-gray-800 font-semibold">Partner 4</p>
-            <p class="text-gray-600 text-sm">Advanced Diagnostics</p>
+          <div class="partner-card">
+            <img src="https://via.placeholder.com/150x80?text=Partner+3" alt="Partner 3 Logo" class="mb-4 rounded shadow-md" style="max-width: 150px;">
+            <p class="text-gray-100 text-sm text-center">HealthNet Global</p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer id="contact" class="bg-blue-600 text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 class="text-2xl font-bold mb-4">EMR Solutions</h3>
-            <p class="text-gray-200">
-              Providing innovative healthcare solutions for a better tomorrow.
-            </p>
+    <!-- Map Section Start -->
+    <section style="padding: 0 1rem; background: #fff; display: block;">
+      <div class="w-full flex justify-center">
+        <iframe
+          src="https://www.google.com/maps?q=Federal+Medical+Centre+Abeokuta&output=embed"
+          width="100%"
+          height="200px"
+          class="map-effect"
+          style="border:0; min-width:300px; max-width:18000px; width:100%; transition: all 0.3s ease; box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Federal Medical Centre Abeokuta Map"
+        ></iframe>
+      </div>
+    </section>
+    <!-- Map Section End -->
+
+    <footer id="contact" class="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 text-white py-2 border-t-8 border-blue-300 shadow-2xl">
+      <div class="container mx-auto px-2 grid grid-cols-1 md:grid-cols-3 gap-2 items-start text-xs">
+        <div class="flex flex-col items-start">
+          <div class="flex items-center mb-1">
+            <img src="https://via.placeholder.com/32x32?text=EMR" alt="EMR Logo" class="w-6 h-6 rounded-full shadow-lg mr-1">
+            <span class="text-base font-extrabold tracking-tight font-serif">EMR Solutions</span>
           </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#mission">Our Mission</a></li>
-              <li>
-                <a href="#services">Services</a>
-                <ul class="pl-4 space-y-1">
-                  <li><a href="#our-services">Our Services</a></li>
-                  <li><a href="#pacs">PACS</a></li>
-                  <li><a href="#appointment">Appointment</a></li>
-                </ul>
-              </li>
-              <li><a href="#partners">Partners</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
-            <p class="mb-2">Email: info@emrsolutions.com</p>
-            <p class="mb-2">Phone: (123) 456-7890</p>
-            <p>Address: 123 Health St, Medical City</p>
+          <p class="text-blue-100 leading-tight mb-1 font-light">Innovative healthcare solutions for a better tomorrow.</p>
+          <div class="flex space-x-2 mt-0.5">
+            <a href="#" class="hover:text-blue-300 transition-colors" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.92 4.92 0 0 0 16.616 3c-2.73 0-4.942 2.21-4.942 4.932 0 .386.045.763.127 1.124C7.728 8.807 4.1 6.884 1.671 3.965c-.423.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.868 9.868 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></svg></a>
+            <a href="#" class="hover:text-blue-300 transition-colors" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
+            <a href="#" class="hover:text-blue-300 transition-colors" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.844-1.563 3.042 0 3.604 2.002 3.604 4.604v5.592z"/></svg></a>
           </div>
         </div>
-        <div class="mt-8 text-center text-gray-200">
-          <p>© 2025 EMR Solutions. All rights reserved.</p>
+        <div>
+          <h3 class="text-xs font-bold mb-1 tracking-wide text-blue-100 uppercase">Quick Links</h3>
+          <ul class="space-y-0.5 text-xs font-medium">
+            <li><a href="#home" class="hover:text-blue-300 transition-colors">Home</a></li>
+            <li><a href="#mission" class="hover:text-blue-300 transition-colors">Our Mission</a></li>
+            <li><a href="#services" class="hover:text-blue-300 transition-colors">Services</a></li>
+            <li><a href="#partners" class="hover:text-blue-300 transition-colors">Partners</a></li>
+            <li><a href="#contact" class="hover:text-blue-300 transition-colors">Contact</a></li>
+          </ul>
         </div>
+        <div>
+          <h3 class="text-xs font-bold mb-1 tracking-wide text-blue-100 uppercase">Contact Us</h3>
+          <div class="space-y-0.5 text-xs font-medium">
+            <div class="flex items-center"><svg class="w-3 h-3 mr-1 text-blue-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12a4 4 0 01-8 0V8a4 4 0 018 0v4z"/><path d="M12 22c4.418 0 8-1.79 8-4V8c0-2.21-3.582-4-8-4S4 5.79 4 8v10c0 2.21 3.582 4 8 4z"/></svg>info@emrsolutions.com</div>
+            <div class="flex items-center"><svg class="w-3 h-3 mr-1 text-blue-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/><path d="M16 3v4a1 1 0 001 1h4"/></svg>(123) 456-7890</div>
+            <div class="flex items-center"><svg class="w-3 h-3 mr-1 text-blue-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243"/><path d="M7 7h.01"/></svg>123 Health St, Medical City</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 border-t border-blue-400 pt-1 text-center text-blue-100 text-[10px] tracking-wide font-light">
+        <p>© 2025 <span class="font-semibold">EMR Solutions</span>. All rights reserved.</p>
       </div>
     </footer>
 
@@ -545,6 +475,25 @@
         } else {
           header.classList.remove("scrolled");
         }
+      });
+
+      // Remove border and rounded corners from all main sections
+      document.addEventListener('DOMContentLoaded', function() {
+        const sectionIds = [
+          'home',
+          'mission',
+          'our-services',
+          'pacs',
+          'partners'
+        ];
+        sectionIds.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.style.border = '';
+            el.style.borderRadius = '';
+            el.style.margin = '';
+          }
+        });
       });
     </script>
   </body>
